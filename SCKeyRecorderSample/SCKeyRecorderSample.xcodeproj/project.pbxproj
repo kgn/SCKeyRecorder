@@ -1,0 +1,259 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		73603142147B15BB009632A1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73603141147B15BB009632A1 /* Cocoa.framework */; };
+		7360316C147B172B009632A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73603168147B172B009632A1 /* main.m */; };
+		7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7360316A147B172B009632A1 /* SCAppDelegate.m */; };
+		73603172147B1732009632A1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7360316E147B1732009632A1 /* Credits.rtf */; };
+		73603173147B1732009632A1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73603170147B1732009632A1 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCKeyRecorderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73603141147B15BB009632A1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		73603144147B15BB009632A1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		73603146147B15BB009632A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		73603167147B172B009632A1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		73603168147B172B009632A1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		73603169147B172B009632A1 /* SCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		7360316A147B172B009632A1 /* SCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		7360316F147B1732009632A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		73603171147B1732009632A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7360313A147B15BA009632A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73603142147B15BB009632A1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		73603132147B15BA009632A1 = {
+			isa = PBXGroup;
+			children = (
+				73603147147B15BB009632A1 /* SCKeyRecorderSample */,
+				73603140147B15BB009632A1 /* Frameworks */,
+				7360313E147B15BB009632A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7360313E147B15BB009632A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73603140147B15BB009632A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73603144147B15BB009632A1 /* AppKit.framework */,
+				73603146147B15BB009632A1 /* Foundation.framework */,
+				73603141147B15BB009632A1 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		73603147147B15BB009632A1 /* SCKeyRecorderSample */ = {
+			isa = PBXGroup;
+			children = (
+				73603169147B172B009632A1 /* SCAppDelegate.h */,
+				7360316A147B172B009632A1 /* SCAppDelegate.m */,
+				73603170147B1732009632A1 /* MainMenu.xib */,
+				73603167147B172B009632A1 /* Info.plist */,
+				73603168147B172B009632A1 /* main.m */,
+				7360316E147B1732009632A1 /* Credits.rtf */,
+			);
+			path = SCKeyRecorderSample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7360313C147B15BA009632A1 /* SCKeyRecorderSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7360315B147B15BB009632A1 /* Build configuration list for PBXNativeTarget "SCKeyRecorderSample" */;
+			buildPhases = (
+				73603139147B15BA009632A1 /* Sources */,
+				7360313A147B15BA009632A1 /* Frameworks */,
+				7360313B147B15BA009632A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SCKeyRecorderSample;
+			productName = SCKeyRecorderSample;
+			productReference = 7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		73603134147B15BA009632A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = 73603137147B15BA009632A1 /* Build configuration list for PBXProject "SCKeyRecorderSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 73603132147B15BA009632A1;
+			productRefGroup = 7360313E147B15BB009632A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7360313C147B15BA009632A1 /* SCKeyRecorderSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7360313B147B15BA009632A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73603172147B1732009632A1 /* Credits.rtf in Resources */,
+				73603173147B1732009632A1 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73603139147B15BA009632A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7360316C147B172B009632A1 /* main.m in Sources */,
+				7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7360316E147B1732009632A1 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7360316F147B1732009632A1 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		73603170147B1732009632A1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73603171147B1732009632A1 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		73603159147B15BB009632A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7360315A147B15BB009632A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7360315C147B15BB009632A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7360315D147B15BB009632A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		73603137147B15BA009632A1 /* Build configuration list for PBXProject "SCKeyRecorderSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73603159147B15BB009632A1 /* Debug */,
+				7360315A147B15BB009632A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7360315B147B15BB009632A1 /* Build configuration list for PBXNativeTarget "SCKeyRecorderSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7360315C147B15BB009632A1 /* Debug */,
+				7360315D147B15BB009632A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 73603134147B15BA009632A1 /* Project object */;
+}
