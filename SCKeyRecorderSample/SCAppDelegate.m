@@ -15,11 +15,14 @@
 @synthesize keyViewThree = _keyViewThree;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
-    [self.keyViewOne setKeysWithString:@"cmd+shift+u"];
+    [self.keyViewOne setKeysWithString:@"command+shift+u"];
+    NSLog(@"%@", [self.keyViewOne keys]);
     [self.keyViewTwo setKeysWithArray:[NSArray arrayWithObjects:
-                                      SCKeyCmd, SCKeyOpt, @"s", nil]];
+                                      [SCKeyCommand key], @"opt", @"s", nil]];
+    NSLog(@"%@", [self.keyViewTwo keys]);    
     [self.keyViewThree setKeysWithArray:[NSArray arrayWithObjects:
-                                       SCKeyCmd, SCKeyUp, nil]];
+                                       [SCKeyControl key], @"up", nil]];
+    NSLog(@"%@", [self.keyViewThree keys]);
 }
 
 @end

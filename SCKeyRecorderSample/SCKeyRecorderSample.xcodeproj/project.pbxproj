@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730D6D03147B2D23001C3F90 /* SCKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 730D6D02147B2D23001C3F90 /* SCKey.m */; };
 		73603142147B15BB009632A1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73603141147B15BB009632A1 /* Cocoa.framework */; };
 		7360316C147B172B009632A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73603168147B172B009632A1 /* main.m */; };
 		7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7360316A147B172B009632A1 /* SCAppDelegate.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		730D6D01147B2D23001C3F90 /* SCKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKey.h; sourceTree = "<group>"; };
+		730D6D02147B2D23001C3F90 /* SCKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKey.m; sourceTree = "<group>"; };
 		7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCKeyRecorderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73603141147B15BB009632A1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73603144147B15BB009632A1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -88,9 +91,11 @@
 			children = (
 				73603178147B1859009632A1 /* SCKeyView.h */,
 				73603179147B1859009632A1 /* SCKeyView.m */,
+				730D6D01147B2D23001C3F90 /* SCKey.h */,
+				730D6D02147B2D23001C3F90 /* SCKey.m */,
 			);
 			name = SCKeyRecorder;
-			path = ..;
+			path = ../SCKeyRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +164,7 @@
 				7360316C147B172B009632A1 /* main.m in Sources */,
 				7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */,
 				7360317A147B1859009632A1 /* SCKeyView.m in Sources */,
+				730D6D03147B2D23001C3F90 /* SCKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
