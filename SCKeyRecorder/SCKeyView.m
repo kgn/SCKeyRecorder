@@ -7,6 +7,8 @@
 
 #import "SCKeyView.h"
 
+#define kBackgroundShadowBlurRadius 4.f
+
 @implementation SCKeyView{
     NSArray *_keys;
 }
@@ -78,6 +80,19 @@
     [gradient release];
     [[NSColor blackColor] setStroke];
     [boundsPath stroke];
+    NSRect shadowRect = boundsRect;
+    shadowRect.origin.x -= kBackgroundShadowBlurRadius;
+    shadowRect.size.width += kBackgroundShadowBlurRadius * 2.f;
+    NSBezierPath *shadowPath = [NSBezierPath bezierPathWithRoundedRect:shadowRect xRadius:5.f yRadius:5.f];
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[NSColor colorWithDeviceWhite:0.f alpha:0.6f]];
+    [shadow setShadowBlurRadius:kBackgroundShadowBlurRadius];
+    [shadow setShadowOffset:NSMakeSize(0.f, -2.f)];
+    [NSGraphicsContext saveGraphicsState];
+    [shadow set];
+    [boundsPath addClip];
+    [shadowPath stroke];
+    [NSGraphicsContext restoreGraphicsState];
     
     NSRect keyRect = NSInsetRect(self.bounds, 5.5f, 5.5f);
     for(SCKey *key in _keys){
