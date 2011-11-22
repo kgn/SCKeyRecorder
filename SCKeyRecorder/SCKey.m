@@ -6,10 +6,14 @@
 //
 
 #import "SCKey.h"
+#import <Carbon/Carbon.h>
+
+
 
 @implementation SCKey{
     NSString *_stringValue;
     NSString *_prettyStringValue;
+    unsigned short _keyCode;
 }
 
 + (SCKey *)key{
@@ -50,6 +54,36 @@
     return self;
 }
 
+- (id)initWithCode:(unsigned short)code
+{
+    if ((self = [super init])) {
+        _keyCode = code;
+    }
+    return self;
+}
+
++ (SCKey *)keyFromCode:(unsigned short)code
+{
+    if (code == kVK_Control || code == kVK_RightControl) {
+        return [SCKeyControl key];
+    } else if (code == kVK_Command) {
+        return [SCKeyCommand key];
+    } else if (code == kVK_Option || code == kVK_RightOption) {
+        return [SCKeyOption key];
+    } else if (code == kVK_Shift || code == kVK_RightShift) {
+        return [SCKeyShift key];
+    } else if (code == kVK_UpArrow) {
+        return [SCKeyUp key];
+    } else if (code == kVK_DownArrow) {
+        return [SCKeyDown key];
+    } else if (code == kVK_LeftArrow) {
+        return [SCKeyLeft key];
+    } else if (code == kVK_RightArrow) {
+        return [SCKeyRight key];
+    }
+    return [[[[self class] alloc] initWithCode:code] autorelease];
+}
+
 - (BOOL)isModifierKey{
     return NO;
 }
@@ -60,6 +94,11 @@
 
 - (NSString *)prettyStringValue{
     return _prettyStringValue ?: @"";
+}
+
+- (unsigned short)keyCode
+{
+    return _keyCode;
 }
 
 - (NSDictionary *)textAttributes{
@@ -131,6 +170,10 @@
     [attributedString drawInRect:rect];
     [attributedString release];
 }
+- (NSUInteger)modifierFlag
+{
+    return 0;
+}
 @end
 
 
@@ -153,6 +196,10 @@
     [attributedString drawInRect:textRect];
     [attributedString release];    
 }
+- (NSUInteger)modifierFlag
+{
+    return NSShiftKeyMask;
+}
 @end
 
 @implementation SCKeyControl
@@ -161,6 +208,10 @@
 }
 - (NSString *)prettyStringValue{
     return @"control";
+}
+- (NSUInteger)modifierFlag
+{
+    return NSControlKeyMask;
 }
 @end
 
@@ -183,6 +234,10 @@
     [attributedString drawInRect:textRect];
     [attributedString release];    
 }
+- (NSUInteger)modifierFlag
+{
+    return NSAlternateKeyMask;
+}
 @end
 
 @implementation SCKeyShift
@@ -191,6 +246,10 @@
 }
 - (NSString *)prettyStringValue{
     return [self stringValue];
+}
+- (NSUInteger)modifierFlag
+{
+    return NSShiftKeyMask;
 }
 @end
 
