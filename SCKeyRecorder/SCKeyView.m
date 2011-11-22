@@ -40,7 +40,7 @@
         }
     }
     
-    // Put the modifier keys at the front and sort everything else alphabetically
+    // Put the modifier keys at the front
     _keys = [[mkeys sortedArrayUsingComparator:^(SCKey *key1, SCKey *key2){
         if([key1 isModifierKey] && ![key2 isModifierKey]){
             return (NSComparisonResult)NSOrderedAscending;
@@ -48,7 +48,7 @@
         if(![key1 isModifierKey] && [key2 isModifierKey]){
             return (NSComparisonResult)NSOrderedDescending;
         }
-        return [[key1 stringValue] localizedCaseInsensitiveCompare:[key2 stringValue]];
+        return (NSComparisonResult)NSOrderedSame;
     }] retain];
     
     [mkeys release];
