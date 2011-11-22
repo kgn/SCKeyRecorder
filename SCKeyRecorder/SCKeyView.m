@@ -6,8 +6,9 @@
 //  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
-#import "SCKeyView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SCKeyView.h"
+#import "NSObject+ARC.h"
 
 #define kBackgroundTopShadowDistance 5.f
 #define kBackgroundTopShadowOpacity 0.25f

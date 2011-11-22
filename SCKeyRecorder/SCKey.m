@@ -6,8 +6,9 @@
 //  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
-#import "SCKey.h"
 #import <Carbon/Carbon.h>
+#import "SCKey.h"
+#import "NSObject+ARC.h"
 
 @implementation SCKey{
     NSString *_stringValue;
