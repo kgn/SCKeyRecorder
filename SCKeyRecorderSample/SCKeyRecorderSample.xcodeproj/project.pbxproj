@@ -12,6 +12,7 @@
 		7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7360316A147B172B009632A1 /* SCAppDelegate.m */; };
 		73603172147B1732009632A1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7360316E147B1732009632A1 /* Credits.rtf */; };
 		73603173147B1732009632A1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73603170147B1732009632A1 /* MainMenu.xib */; };
+		7360317A147B1859009632A1 /* SCKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73603179147B1859009632A1 /* SCKeyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		7360316A147B172B009632A1 /* SCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		7360316F147B1732009632A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		73603171147B1732009632A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		73603178147B1859009632A1 /* SCKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKeyView.h; sourceTree = "<group>"; };
+		73603179147B1859009632A1 /* SCKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKeyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 		73603132147B15BA009632A1 = {
 			isa = PBXGroup;
 			children = (
+				73603174147B1815009632A1 /* SCKeyRecorder */,
 				73603147147B15BB009632A1 /* SCKeyRecorderSample */,
 				73603140147B15BB009632A1 /* Frameworks */,
 				7360313E147B15BB009632A1 /* Products */,
@@ -77,6 +81,16 @@
 				7360316E147B1732009632A1 /* Credits.rtf */,
 			);
 			path = SCKeyRecorderSample;
+			sourceTree = "<group>";
+		};
+		73603174147B1815009632A1 /* SCKeyRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				73603178147B1859009632A1 /* SCKeyView.h */,
+				73603179147B1859009632A1 /* SCKeyView.m */,
+			);
+			name = SCKeyRecorder;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +158,7 @@
 			files = (
 				7360316C147B172B009632A1 /* main.m in Sources */,
 				7360316D147B172B009632A1 /* SCAppDelegate.m in Sources */,
+				7360317A147B1859009632A1 /* SCKeyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
