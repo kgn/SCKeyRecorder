@@ -25,14 +25,13 @@ SCKeyRecorder uses macros to add the retains and releases in the preprocessor ph
 value of `__has_feature(objc_arc)`. These macros can be found in 
 [SCARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/SCARC.h).
 
-    #define SCARCRetain(obj)
-    #define SCARCRelease(obj)
-    #define SCARCAutoRelease(obj)
-    #define SCARCSuperDealloc
+    SCARCRetain(obj)
+    SCARCRelease(obj)
+    SCARCAutoRelease(obj)
+    SCARCSuperDealloc
 
 Use these macros insead of the standard `[NSObject retain]`, `[NSObject release]`.
-These macros will wrap the object in retain and release if arc is not being used,
-and they are essentially a no-op if arc is being used.
+These macros will wrap the object in retain and release only if arc is not being used.
 
     SCARCAutoRelease([[[self class] alloc] initWithCode:code]);
 
