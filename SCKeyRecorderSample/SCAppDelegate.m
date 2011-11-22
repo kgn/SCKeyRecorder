@@ -16,13 +16,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
     [self.keyViewOne setKeysWithString:@"command+shift+u"];
-    NSLog(@"%@", [self.keyViewOne keys]);
+    NSLog(@"%@", [self.keyViewOne keysString]);
     [self.keyViewTwo setKeysWithArray:[NSArray arrayWithObjects:
                                       [SCKeyCommand key], @"opt", @"s", nil]];
-    NSLog(@"%@", [self.keyViewTwo keys]);    
+    NSLog(@"%@", [self.keyViewTwo keysString]);    
     [self.keyViewThree setKeysWithArray:[NSArray arrayWithObjects:
                                        [SCKeyControl key], @"up", nil]];
-    NSLog(@"%@", [self.keyViewThree keys]);
+    NSLog(@"%@", [self.keyViewThree keysString]);
 }
 
 @end

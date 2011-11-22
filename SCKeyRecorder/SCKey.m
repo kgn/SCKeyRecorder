@@ -55,11 +55,11 @@
 }
 
 - (NSString *)stringValue{
-    return _stringValue;
+    return _stringValue ?: @"";
 }
 
 - (NSString *)prettyStringValue{
-    return _prettyStringValue;
+    return _prettyStringValue ?: @"";
 }
 
 - (NSDictionary *)textAttributes{
@@ -74,14 +74,15 @@
         [attributes setObject:[NSFont systemFontOfSize:11.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
         _textAttributes = [[NSDictionary dictionaryWithDictionary:attributes] retain];
+        [attributes release];
         [textShadow release];
     }
     return _textAttributes;
 }
 
 - (NSDictionary *)largeTextAttributes{
-    static NSDictionary *_boldTextAttributes = nil;
-    if(_boldTextAttributes == nil){
+    static NSDictionary *_largeTextAttributes = nil;
+    if(_largeTextAttributes == nil){
         NSShadow *textShadow = [[NSShadow alloc] init];
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];
@@ -90,10 +91,11 @@
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:13.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
-        _boldTextAttributes = [[NSDictionary dictionaryWithDictionary:attributes] retain];
+        _largeTextAttributes = [[NSDictionary dictionaryWithDictionary:attributes] retain];
+        [attributes release];        
         [textShadow release];
     }
-    return _boldTextAttributes;
+    return _largeTextAttributes;
 }
 
 - (void)drawKeyInRect:(NSRect)rect{

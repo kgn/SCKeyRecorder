@@ -22,7 +22,7 @@
     [self setKeysWithArray:[keys componentsSeparatedByString:@"+"]];
 }
 
-- (NSString *)keys{
+- (NSString *)keysString{
     NSMutableArray *keys = [NSMutableArray arrayWithCapacity:[_keys count]];
     for(SCKey *key in _keys){
         [keys addObject:[key stringValue]];

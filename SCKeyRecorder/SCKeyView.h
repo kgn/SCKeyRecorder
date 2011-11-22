@@ -9,7 +9,7 @@
 
 @interface SCKeyView : NSView
 
-- (NSArray *)keys;
+- (NSString *)keysString;
 - (void)setKeysWithString:(NSString *)string;
 - (void)setKeysWithArray:(NSArray *)string;
 
