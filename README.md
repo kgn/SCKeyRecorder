@@ -22,9 +22,9 @@ you don't have to worry about how this works, just add it to your project :) If 
 to SCKeyRecorder please read this section.
 
 SCKeyRecorder adds `arc_retain`, `arc_release`, and `arc_autorelease` to `NSObject` which should be used instead
-of the standard methods. Under arc these methods will not preform any memory management, but under non-arc the
-approprate `retain`, `release`, and `autorelease` will be preformed. These methods can be found in the
-[NSObject+ARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/NSObject+ARC.h) category.
+of the standard methods. Under arc these methods will not perform any memory management, but under non-arc the
+appropriate `retain`, `release`, and `autorelease` will be performed. These methods can be found in
+[NSObject+ARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/NSObject+ARC.h).
 There is one additional item implemented as a macro for `[super dealloc]`.
 
     - (id)arc_retain;
