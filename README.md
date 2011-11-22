@@ -18,13 +18,12 @@ An Objective-C shortcut recorder for the Mac.
 ## ARC
 
 SCKeyRecorder works with arc and non-arc projects. If you just want to use SCKeyRecorder
-you don't have to worry about this, just add it to your project. If you want to contribute
+you don't have to worry about how this works, just add it to your project :) If you want to contribute
 to SCKeyRecorder please read this section.
 
 SCKeyRecorder uses macros to add the retains and releases in the preprocessor phase based on the
-`__has_feature(objc_arc)` macro. These macros can be found in the
-[SCARC.h](https://github.com/InScopeApps/SCKeyRecorder/raw/master/SCKeyRecorder/SCARC.h) file.
-This file contains macros related to retaining and releasing objects.
+value of `__has_feature(objc_arc)`. These macros can be found in 
+[SCARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/SCARC.h).
 
     #define SCARCRetain(obj)
     #define SCARCRelease(obj)
@@ -39,7 +38,11 @@ and they are essentially a no-op if arc is being used.
 
     SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
 
-    SCARCRelease(attributedString);
+    - (void)dealloc{
+        SCARCRelease(_stringValue);
+        SCARCRelease(_prettyStringValue);
+        SCARCSuperDealloc;
+    }
 
 
 ## Credits
