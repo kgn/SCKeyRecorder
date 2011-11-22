@@ -17,7 +17,7 @@
 }
 
 + (SCKey *)key{
-    return [[[[self class] alloc] init] autorelease];
+    return SCARCAutoRelease([[[self class] alloc] init]);
 }
 
 + (SCKey *)keyFromString:(NSString *)string{
@@ -43,27 +43,25 @@
     }else if([string isEqualToString:@"right"]){
         return [SCKeyRight key];
     }
-    return [[[[self class] alloc] initWithString:string] autorelease];
+    return SCARCAutoRelease([[[self class] alloc] initWithString:string]);
 }
 
 - (id)initWithString:(NSString *)string{
     if ((self = [super init])) {
         _stringValue = [string copy];
-        _prettyStringValue = [[_stringValue capitalizedString] retain];
+        _prettyStringValue = SCARCRetain([_stringValue capitalizedString]);
     }
     return self;
 }
 
-- (id)initWithCode:(unsigned short)code
-{
+- (id)initWithCode:(unsigned short)code{
     if ((self = [super init])) {
         _keyCode = code;
     }
     return self;
 }
 
-+ (SCKey *)keyFromCode:(unsigned short)code
-{
++ (SCKey *)keyFromCode:(unsigned short)code{
     if (code == kVK_Control || code == kVK_RightControl) {
         return [SCKeyControl key];
     } else if (code == kVK_Command) {
@@ -81,7 +79,7 @@
     } else if (code == kVK_RightArrow) {
         return [SCKeyRight key];
     }
-    return [[[[self class] alloc] initWithCode:code] autorelease];
+    return SCARCAutoRelease([[[self class] alloc] initWithCode:code]);
 }
 
 - (BOOL)isModifierKey{
@@ -96,8 +94,7 @@
     return _prettyStringValue ?: @"";
 }
 
-- (unsigned short)keyCode
-{
+- (unsigned short)keyCode{
     return _keyCode;
 }
 
@@ -111,9 +108,9 @@
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:11.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
-        _textAttributes = [[NSDictionary dictionaryWithDictionary:attributes] retain];
-        [attributes release];
-        [textShadow release];
+        _textAttributes = SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
+        SCARCRelease(attributes);
+        SCARCRelease(textShadow);
     }
     return _textAttributes;
 }
@@ -128,9 +125,9 @@
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:13.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
-        _largeTextAttributes = [[NSDictionary dictionaryWithDictionary:attributes] retain];
-        [attributes release];        
-        [textShadow release];
+        _largeTextAttributes = SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
+        SCARCRelease(attributes);
+        SCARCRelease(textShadow);
     }
     return _largeTextAttributes;
 }
@@ -144,13 +141,13 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:keyString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
-    [attributedString release];
+    SCARCRelease(attributedString);
 }
 
 - (void)dealloc{
-    [_stringValue release];
-    [_prettyStringValue release];
-    [super dealloc];
+    SCARCRelease(_stringValue);
+    SCARCRelease(_prettyStringValue);
+    SCARCSuperDealloc;
 }
 
 @end
@@ -168,10 +165,9 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:keyString attributes:[self textAttributes]];
     [attributedString drawInRect:rect];
-    [attributedString release];
+    SCARCRelease(attributedString);
 }
-- (NSUInteger)modifierFlag
-{
+- (NSUInteger)modifierFlag{
     return 0;
 }
 @end
@@ -194,10 +190,9 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
-    [attributedString release];    
+    SCARCRelease(attributedString);    
 }
-- (NSUInteger)modifierFlag
-{
+- (NSUInteger)modifierFlag{
     return NSShiftKeyMask;
 }
 @end
@@ -209,8 +204,7 @@
 - (NSString *)prettyStringValue{
     return @"control";
 }
-- (NSUInteger)modifierFlag
-{
+- (NSUInteger)modifierFlag{
     return NSControlKeyMask;
 }
 @end
@@ -232,10 +226,9 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self textAttributes]];
     [attributedString drawInRect:textRect];
-    [attributedString release];    
+    SCARCRelease(attributedString);
 }
-- (NSUInteger)modifierFlag
-{
+- (NSUInteger)modifierFlag{
     return NSAlternateKeyMask;
 }
 @end

@@ -47,7 +47,7 @@
     }
     
     // Put the modifier keys at the front
-    _keys = [[mkeys sortedArrayUsingComparator:^(SCKey *key1, SCKey *key2){
+    _keys = SCARCRetain([mkeys sortedArrayUsingComparator:^(SCKey *key1, SCKey *key2){
         if([key1 isModifierKey] && ![key2 isModifierKey]){
             return (NSComparisonResult)NSOrderedAscending;
         }
@@ -55,9 +55,9 @@
             return (NSComparisonResult)NSOrderedDescending;
         }
         return (NSComparisonResult)NSOrderedSame;
-    }] retain];
+    }]);
     
-    [mkeys release];
+    SCARCRelease(mkeys);
     
     [self setNeedsDisplay:YES];
 }
@@ -81,20 +81,15 @@
     NSColor *endColor = [NSColor colorWithDeviceRed:0.694 green:0.694 blue:0.694 alpha:1.00];
     NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
     [gradient drawInBezierPath:boundsPath angle:90];
-#if !__has_feature(objc_arc)
-    [gradient release];
-#endif
+    SCARCRelease(gradient);
+
     static CIImage *noisePattern = nil;
     if (!noisePattern) {
         CIFilter *randomGenerator = [CIFilter filterWithName:@"CIColorMonochrome"];
         [randomGenerator setValue:[[CIFilter filterWithName:@"CIRandomGenerator"] valueForKey:@"outputImage"]
                            forKey:@"inputImage"];
         [randomGenerator setDefaults];
-#if __has_feature(objc_arc)
-        noisePattern = [randomGenerator valueForKey:@"outputImage"];
-#else
-        noisePattern = [[randomGenerator valueForKey:@"outputImage"] retain];
-#endif
+        noisePattern = SCARCRetain([randomGenerator valueForKey:@"outputImage"]);
     }
     [NSGraphicsContext saveGraphicsState];
     [boundsPath addClip];
@@ -107,10 +102,9 @@
     NSColor *bottomShadowColor = [NSColor colorWithDeviceWhite:0.f alpha:kBackgroundBottomShadowOpacity];
     NSGradient *bottomShadowGradient = [[NSGradient alloc] initWithStartingColor:bottomShadowColor endingColor:[NSColor clearColor]];
     [bottomShadowGradient drawInRect:bottomShadowRect angle:90];
-#if !__has_feature(objc_arc)
-    [bottomShadowGradient release];
-    [topShadowGradient release];
-#endif
+    SCARCRelease(bottomShadowGradient);
+    SCARCRelease(topShadowGradient);
+
     [NSGraphicsContext restoreGraphicsState];
     
     [[NSColor blackColor] setStroke];

@@ -6,6 +6,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SCARC.h"
 
 @interface SCKey : NSObject
 + (SCKey *)key;
