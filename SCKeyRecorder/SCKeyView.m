@@ -66,11 +66,18 @@
 
 - (void)drawRect:(NSRect)dirtyRect{
     NSRect boundsRect = NSInsetRect(self.bounds, 1.5f, 1.5f);
-    [[NSColor grayColor] setStroke];
-    [[NSColor lightGrayColor] setFill];
+    NSRect dropShadowRect = boundsRect;
+    dropShadowRect.origin.y -= 1.f;
+    [[NSColor whiteColor] setFill];
+    NSRectFill(dropShadowRect);
     NSBezierPath *boundsPath = [NSBezierPath bezierPathWithRoundedRect:boundsRect xRadius:5.0f yRadius:5.0f];
+    NSColor *startColor = [NSColor colorWithDeviceRed:0.851 green:0.851 blue:0.851 alpha:1.00];
+    NSColor *endColor = [NSColor colorWithDeviceRed:0.694 green:0.694 blue:0.694 alpha:1.00];
+    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
+    [gradient drawInBezierPath:boundsPath angle:90];
+    [gradient release];
+    [[NSColor blackColor] setStroke];
     [boundsPath stroke];
-    [boundsPath fill];
     
     NSRect keyRect = NSInsetRect(self.bounds, 5.5f, 5.5f);
     for(SCKey *key in _keys){
