@@ -41,7 +41,7 @@ Some examples:
     - (void)dealloc{
         [_stringValue arc_release];
         [_prettyStringValue arc_release];
-        SCARCSuperDealloc;
+        ARCSuperDealloc;
     }
 
 
