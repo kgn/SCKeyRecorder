@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03AD5EDC147B608500E23455 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AD5EDB147B608500E23455 /* QuartzCore.framework */; };
 		730D6D03147B2D23001C3F90 /* SCKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 730D6D02147B2D23001C3F90 /* SCKey.m */; };
 		73603142147B15BB009632A1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73603141147B15BB009632A1 /* Cocoa.framework */; };
 		7360316C147B172B009632A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73603168147B172B009632A1 /* main.m */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03AD5EDB147B608500E23455 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		730D6D01147B2D23001C3F90 /* SCKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKey.h; sourceTree = "<group>"; };
 		730D6D02147B2D23001C3F90 /* SCKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKey.m; sourceTree = "<group>"; };
 		7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCKeyRecorderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AD5EDC147B608500E23455 /* QuartzCore.framework in Frameworks */,
 				73603142147B15BB009632A1 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +51,7 @@
 		73603132147B15BA009632A1 = {
 			isa = PBXGroup;
 			children = (
+				03AD5EDB147B608500E23455 /* QuartzCore.framework */,
 				73603174147B1815009632A1 /* SCKeyRecorder */,
 				73603147147B15BB009632A1 /* SCKeyRecorderSample */,
 				73603140147B15BB009632A1 /* Frameworks */,

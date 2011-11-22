@@ -6,6 +6,7 @@
 //
 
 #import "SCKeyView.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kBackgroundShadowBlurRadius 4.f
 
@@ -77,7 +78,25 @@
     NSColor *endColor = [NSColor colorWithDeviceRed:0.694 green:0.694 blue:0.694 alpha:1.00];
     NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
     [gradient drawInBezierPath:boundsPath angle:90];
+#if !__has_feature(objc_arc)
     [gradient release];
+#endif
+    static CIImage *noisePattern = nil;
+    if (!noisePattern) {
+        CIFilter *randomGenerator = [CIFilter filterWithName:@"CIColorMonochrome"];
+        [randomGenerator setValue:[[CIFilter filterWithName:@"CIRandomGenerator"] valueForKey:@"outputImage"]
+                           forKey:@"inputImage"];
+        [randomGenerator setDefaults];
+#if __has_feature(objc_arc)
+        noisePattern = [randomGenerator valueForKey:@"outputImage"];
+#else
+        noisePattern = [[randomGenerator valueForKey:@"outputImage"] retain];
+#endif
+    }
+    [NSGraphicsContext saveGraphicsState];
+    [boundsPath addClip];
+    [noisePattern drawAtPoint:NSZeroPoint fromRect:self.bounds operation:NSCompositePlusLighter fraction:0.04];
+    [NSGraphicsContext restoreGraphicsState];
     [[NSColor blackColor] setStroke];
     [boundsPath stroke];
     NSRect shadowRect = boundsRect;
