@@ -13,4 +13,7 @@
 - (void)setKeysWithString:(NSString *)string;
 - (void)setKeysWithArray:(NSArray *)string;
 
+- (void)setKeysFromStandardUserDefaultForKey:(NSString *)key;
+- (void)storeKeysInStandardUserDefaultForKey:(NSString *)key;
+
 @end

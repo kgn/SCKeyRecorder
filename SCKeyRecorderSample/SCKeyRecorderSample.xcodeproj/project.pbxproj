@@ -89,10 +89,10 @@
 		73603174147B1815009632A1 /* SCKeyRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				73603178147B1859009632A1 /* SCKeyView.h */,
-				73603179147B1859009632A1 /* SCKeyView.m */,
 				730D6D01147B2D23001C3F90 /* SCKey.h */,
 				730D6D02147B2D23001C3F90 /* SCKey.m */,
+				73603178147B1859009632A1 /* SCKeyView.h */,
+				73603179147B1859009632A1 /* SCKeyView.m */,
 			);
 			name = SCKeyRecorder;
 			path = ../SCKeyRecorder;

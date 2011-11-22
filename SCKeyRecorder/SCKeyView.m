@@ -18,10 +18,6 @@
     return self;
 }
 
-- (void)setKeysWithString:(NSString *)keys{
-    [self setKeysWithArray:[keys componentsSeparatedByString:@"+"]];
-}
-
 - (NSString *)keysString{
     NSMutableArray *keys = [NSMutableArray arrayWithCapacity:[_keys count]];
     for(SCKey *key in _keys){
@@ -30,16 +26,17 @@
     return [keys componentsJoinedByString:@"+"];
 }
 
+- (void)setKeysWithString:(NSString *)keys{
+    [self setKeysWithArray:[keys componentsSeparatedByString:@"+"]];
+}
+
 - (void)setKeysWithArray:(NSArray *)keys{
     NSMutableArray *mkeys = [[NSMutableArray alloc] init];
     for(id key in keys){
         if([key isKindOfClass:[SCKey class]]){
             [mkeys addObject:key];
         }else if([key isKindOfClass:[NSString class]]){
-            SCKey *newKey = [SCKey keyFromString:(NSString *)key];
-            [mkeys addObject:newKey];
-        }else{
-            NSLog(@"Unknown key: %@", key);
+            [mkeys addObject:[SCKey keyFromString:(NSString *)key]];
         }
     }
     
@@ -57,6 +54,14 @@
     [mkeys release];
     
     [self setNeedsDisplay:YES];
+}
+
+- (void)setKeysFromStandardUserDefaultForKey:(NSString *)key{
+    [self setKeysWithString:[[NSUserDefaults standardUserDefaults] stringForKey:key]];
+}
+
+- (void)storeKeysInStandardUserDefaultForKey:(NSString *)key{
+    [[NSUserDefaults standardUserDefaults] setObject:[self keysString] forKey:key];
 }
 
 - (void)drawRect:(NSRect)dirtyRect{

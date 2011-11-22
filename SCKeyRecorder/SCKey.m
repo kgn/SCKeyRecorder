@@ -68,7 +68,6 @@
         NSShadow *textShadow = [[NSShadow alloc] init];
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];
-        
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:11.0f] forKey:NSFontAttributeName];
@@ -86,7 +85,6 @@
         NSShadow *textShadow = [[NSShadow alloc] init];
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];
-        
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:13.0f] forKey:NSFontAttributeName];
@@ -120,11 +118,9 @@
 
 
 @implementation SCModifierKey
-
 - (BOOL)isModifierKey{
     return YES;
 }
-
 - (void)drawKeyInRect:(NSRect)rect{
     NSString *keyString = [self prettyStringValue];
     rect.size = [keyString sizeWithAttributes:[self textAttributes]];
@@ -135,7 +131,6 @@
     [attributedString drawInRect:rect];
     [attributedString release];
 }
-
 @end
 
 
