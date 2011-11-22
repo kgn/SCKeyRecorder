@@ -21,25 +21,26 @@ SCKeyRecorder works with arc and non-arc projects. If you just want to use SCKey
 you don't have to worry about how this works, just add it to your project :) If you want to contribute
 to SCKeyRecorder please read this section.
 
-SCKeyRecorder uses macros to add the retains and releases in the preprocessor phase based on the
-value of `__has_feature(objc_arc)`. These macros can be found in
-[SCARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/SCARC.h).
+SCKeyRecorder adds `arc_retain`, `arc_release`, and `arc_autorelease` to `NSObject` which should be used instead
+of the standard methods. Under arc these methods will not preform any memory management, but under non-arc the
+approprate `retain`, `release`, and `autorelease` will be preformed. These methods can be found in the
+[NSObject+ARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/NSObject+ARC.h) category.
+There is one additional item implemented as a macro for `[super dealloc]`.
 
-    SCARCRetain(obj)
-    SCARCRelease(obj)
-    SCARCAutoRelease(obj)
-    SCARCSuperDealloc
+    - (id)arc_retain;
+    - (void)arc_release;
+    - (id)arc_autorelease;
+    #define ARCSuperDealloc
 
-Use these macros insead of the standard `[NSObject retain]`, `[NSObject release]`.
-These macros will wrap the object in retain and release only if arc is not being used.
+Some examples:
 
-    SCARCAutoRelease([[[self class] alloc] initWithCode:code]);
+    [[[[self class] alloc] initWithCode:code] arc_autorelease];
 
-    SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
+    [[NSDictionary dictionaryWithDictionary:attributes] arc_retain];
 
     - (void)dealloc{
-        SCARCRelease(_stringValue);
-        SCARCRelease(_prettyStringValue);
+        [_stringValue arc_release];
+        [_prettyStringValue arc_release];
         SCARCSuperDealloc;
     }
 

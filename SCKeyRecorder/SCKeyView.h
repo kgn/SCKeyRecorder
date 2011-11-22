@@ -3,6 +3,7 @@
 //  SCKeyRecorder
 //
 //  Created by David Keegan on 11/21/11.
+//  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
 #import "SCKey.h"

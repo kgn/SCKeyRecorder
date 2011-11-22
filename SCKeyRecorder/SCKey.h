@@ -3,10 +3,11 @@
 //  SCKeyRecorder
 //
 //  Created by David Keegan on 11/21/11.
+//  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SCARC.h"
+#import "NSObject+ARC.h"
 
 @interface SCKey : NSObject
 + (SCKey *)key;

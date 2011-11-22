@@ -3,12 +3,11 @@
 //  SCKeyRecorder
 //
 //  Created by David Keegan on 11/21/11.
+//  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
 #import "SCKey.h"
 #import <Carbon/Carbon.h>
-
-
 
 @implementation SCKey{
     NSString *_stringValue;
@@ -17,7 +16,7 @@
 }
 
 + (SCKey *)key{
-    return SCARCAutoRelease([[[self class] alloc] init]);
+    return [[[[self class] alloc] init] arc_autorelease];
 }
 
 + (SCKey *)keyFromString:(NSString *)string{
@@ -43,13 +42,13 @@
     }else if([string isEqualToString:@"right"]){
         return [SCKeyRight key];
     }
-    return SCARCAutoRelease([[[self class] alloc] initWithString:string]);
+    return [[[[self class] alloc] initWithString:string] arc_autorelease];
 }
 
 - (id)initWithString:(NSString *)string{
     if ((self = [super init])) {
         _stringValue = [string copy];
-        _prettyStringValue = SCARCRetain([_stringValue capitalizedString]);
+        _prettyStringValue = [[_stringValue capitalizedString] arc_retain];
     }
     return self;
 }
@@ -79,7 +78,7 @@
     } else if (code == kVK_RightArrow) {
         return [SCKeyRight key];
     }
-    return SCARCAutoRelease([[[self class] alloc] initWithCode:code]);
+    return [[[[self class] alloc] initWithCode:code] arc_autorelease];
 }
 
 - (BOOL)isModifierKey{
@@ -108,9 +107,9 @@
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:11.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
-        _textAttributes = SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
-        SCARCRelease(attributes);
-        SCARCRelease(textShadow);
+        _textAttributes = [[NSDictionary dictionaryWithDictionary:attributes] arc_retain];
+        [attributes arc_release];
+        [textShadow arc_release];
     }
     return _textAttributes;
 }
@@ -125,9 +124,9 @@
         [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:13.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
-        _largeTextAttributes = SCARCRetain([NSDictionary dictionaryWithDictionary:attributes]);
-        SCARCRelease(attributes);
-        SCARCRelease(textShadow);
+        _largeTextAttributes = [[NSDictionary dictionaryWithDictionary:attributes] arc_retain];
+        [attributes arc_release];
+        [textShadow arc_release];
     }
     return _largeTextAttributes;
 }
@@ -141,13 +140,13 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:keyString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
-    SCARCRelease(attributedString);
+    [attributedString arc_release];
 }
 
 - (void)dealloc{
-    SCARCRelease(_stringValue);
-    SCARCRelease(_prettyStringValue);
-    SCARCSuperDealloc;
+    [_stringValue arc_release];
+    [_prettyStringValue arc_release];
+    ARCSuperDealloc;
 }
 
 @end
@@ -165,7 +164,7 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:keyString attributes:[self textAttributes]];
     [attributedString drawInRect:rect];
-    SCARCRelease(attributedString);
+    [attributedString arc_release];
 }
 - (NSUInteger)modifierFlag{
     return 0;
@@ -190,7 +189,7 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
-    SCARCRelease(attributedString);    
+    [attributedString arc_release];    
 }
 - (NSUInteger)modifierFlag{
     return NSShiftKeyMask;
@@ -226,7 +225,7 @@
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self textAttributes]];
     [attributedString drawInRect:textRect];
-    SCARCRelease(attributedString);
+    [attributedString arc_release];
 }
 - (NSUInteger)modifierFlag{
     return NSAlternateKeyMask;

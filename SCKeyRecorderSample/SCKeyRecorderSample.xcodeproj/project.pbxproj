@@ -17,6 +17,7 @@
 		73603172147B1732009632A1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7360316E147B1732009632A1 /* Credits.rtf */; };
 		73603173147B1732009632A1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73603170147B1732009632A1 /* MainMenu.xib */; };
 		7360317A147B1859009632A1 /* SCKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73603179147B1859009632A1 /* SCKeyView.m */; };
+		736D72AE147B99CC00238602 /* NSObject+ARC.m in Sources */ = {isa = PBXBuildFile; fileRef = 736D72AD147B99CC00238602 /* NSObject+ARC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,6 @@
 		03AD5EE1147B69B800E23455 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		730D6D01147B2D23001C3F90 /* SCKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKey.h; sourceTree = "<group>"; };
 		730D6D02147B2D23001C3F90 /* SCKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKey.m; sourceTree = "<group>"; };
-		733DB105147B8B8E00A87DAA /* SCARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARC.h; sourceTree = "<group>"; };
 		7360313D147B15BB009632A1 /* SCKeyRecorderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCKeyRecorderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73603141147B15BB009632A1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73603144147B15BB009632A1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -39,6 +39,8 @@
 		73603171147B1732009632A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		73603178147B1859009632A1 /* SCKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKeyView.h; sourceTree = "<group>"; };
 		73603179147B1859009632A1 /* SCKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKeyView.m; sourceTree = "<group>"; };
+		736D72AC147B99CC00238602 /* NSObject+ARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ARC.h"; sourceTree = "<group>"; };
+		736D72AD147B99CC00238602 /* NSObject+ARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ARC.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +103,14 @@
 		73603174147B1815009632A1 /* SCKeyRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				733DB105147B8B8E00A87DAA /* SCARC.h */,
 				730D6D01147B2D23001C3F90 /* SCKey.h */,
 				730D6D02147B2D23001C3F90 /* SCKey.m */,
 				73603178147B1859009632A1 /* SCKeyView.h */,
 				73603179147B1859009632A1 /* SCKeyView.m */,
 				03AD5EDE147B689900E23455 /* SCKeyManager.h */,
 				03AD5EDF147B689900E23455 /* SCKeyManager.m */,
+				736D72AC147B99CC00238602 /* NSObject+ARC.h */,
+				736D72AD147B99CC00238602 /* NSObject+ARC.m */,
 			);
 			name = SCKeyRecorder;
 			path = ../SCKeyRecorder;
@@ -181,6 +184,7 @@
 				7360317A147B1859009632A1 /* SCKeyView.m in Sources */,
 				730D6D03147B2D23001C3F90 /* SCKey.m in Sources */,
 				03AD5EE0147B689900E23455 /* SCKeyManager.m in Sources */,
+				736D72AE147B99CC00238602 /* NSObject+ARC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

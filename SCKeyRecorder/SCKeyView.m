@@ -3,6 +3,7 @@
 //  SCKeyRecorder
 //
 //  Created by David Keegan on 11/21/11.
+//  Copyright (c) 2011 David Keegan. All rights reserved.
 //
 
 #import "SCKeyView.h"
@@ -46,8 +47,9 @@
         }
     }
     
+    [_keys arc_release];
     // Put the modifier keys at the front
-    _keys = SCARCRetain([mkeys sortedArrayUsingComparator:^(SCKey *key1, SCKey *key2){
+    _keys = [[mkeys sortedArrayUsingComparator:^(SCKey *key1, SCKey *key2){
         if([key1 isModifierKey] && ![key2 isModifierKey]){
             return (NSComparisonResult)NSOrderedAscending;
         }
@@ -55,9 +57,9 @@
             return (NSComparisonResult)NSOrderedDescending;
         }
         return (NSComparisonResult)NSOrderedSame;
-    }]);
+    }] arc_retain];
     
-    SCARCRelease(mkeys);
+    [mkeys arc_release];
     
     [self setNeedsDisplay:YES];
 }
@@ -81,7 +83,7 @@
     NSColor *endColor = [NSColor colorWithDeviceRed:0.694 green:0.694 blue:0.694 alpha:1.00];
     NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
     [gradient drawInBezierPath:boundsPath angle:90];
-    SCARCRelease(gradient);
+    [gradient arc_release];
 
     static CIImage *noisePattern = nil;
     if (!noisePattern) {
@@ -89,7 +91,7 @@
         [randomGenerator setValue:[[CIFilter filterWithName:@"CIRandomGenerator"] valueForKey:@"outputImage"]
                            forKey:@"inputImage"];
         [randomGenerator setDefaults];
-        noisePattern = SCARCRetain([randomGenerator valueForKey:@"outputImage"]);
+        noisePattern = [[randomGenerator valueForKey:@"outputImage"] arc_retain];
     }
     [NSGraphicsContext saveGraphicsState];
     [boundsPath addClip];
@@ -102,8 +104,8 @@
     NSColor *bottomShadowColor = [NSColor colorWithDeviceWhite:0.f alpha:kBackgroundBottomShadowOpacity];
     NSGradient *bottomShadowGradient = [[NSGradient alloc] initWithStartingColor:bottomShadowColor endingColor:[NSColor clearColor]];
     [bottomShadowGradient drawInRect:bottomShadowRect angle:90];
-    SCARCRelease(bottomShadowGradient);
-    SCARCRelease(topShadowGradient);
+    [bottomShadowGradient arc_release];
+    [topShadowGradient arc_release];
 
     [NSGraphicsContext restoreGraphicsState];
     
