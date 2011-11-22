@@ -8,7 +8,10 @@
 #import "SCKeyView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kBackgroundShadowBlurRadius 4.f
+#define kBackgroundTopShadowDistance 5.f
+#define kBackgroundTopShadowOpacity 0.25f
+#define kBackgoundBottomShadowDistance 8.f
+#define kBackgroundBottomShadowOpacity 0.15f
 
 @implementation SCKeyView{
     NSArray *_keys;
@@ -96,22 +99,23 @@
     [NSGraphicsContext saveGraphicsState];
     [boundsPath addClip];
     [noisePattern drawAtPoint:NSZeroPoint fromRect:self.bounds operation:NSCompositePlusLighter fraction:0.04];
+    NSRect topShadowRect = NSMakeRect(boundsRect.origin.x, NSMaxY(boundsRect) - kBackgroundTopShadowDistance, boundsRect.size.width, kBackgroundTopShadowDistance);
+    NSColor *topShadowColor = [NSColor colorWithDeviceWhite:0.f alpha:kBackgroundTopShadowOpacity];
+    NSGradient *topShadowGradient = [[NSGradient alloc] initWithStartingColor:[NSColor clearColor] endingColor:topShadowColor];
+    [topShadowGradient drawInRect:topShadowRect angle:90];
+    NSRect bottomShadowRect = NSMakeRect(boundsRect.origin.x, boundsRect.origin.y, boundsRect.size.width, kBackgroundTopShadowDistance);
+    NSColor *bottomShadowColor = [NSColor colorWithDeviceWhite:0.f alpha:kBackgroundBottomShadowOpacity];
+    NSGradient *bottomShadowGradient = [[NSGradient alloc] initWithStartingColor:bottomShadowColor endingColor:[NSColor clearColor]];
+    [bottomShadowGradient drawInRect:bottomShadowRect angle:90];
+#if !__has_feature(objc_arc)
+    [bottomShadowGradient release];
+    [topShadowGradient release];
+#endif
     [NSGraphicsContext restoreGraphicsState];
+    
     [[NSColor blackColor] setStroke];
     [boundsPath stroke];
-    NSRect shadowRect = boundsRect;
-    shadowRect.origin.x -= kBackgroundShadowBlurRadius;
-    shadowRect.size.width += kBackgroundShadowBlurRadius * 2.f;
-    NSBezierPath *shadowPath = [NSBezierPath bezierPathWithRoundedRect:shadowRect xRadius:5.f yRadius:5.f];
-    NSShadow *shadow = [[NSShadow alloc] init];
-    [shadow setShadowColor:[NSColor colorWithDeviceWhite:0.f alpha:0.6f]];
-    [shadow setShadowBlurRadius:kBackgroundShadowBlurRadius];
-    [shadow setShadowOffset:NSMakeSize(0.f, -2.f)];
-    [NSGraphicsContext saveGraphicsState];
-    [shadow set];
-    [boundsPath addClip];
-    [shadowPath stroke];
-    [NSGraphicsContext restoreGraphicsState];
+    
     
     NSRect keyRect = NSInsetRect(self.bounds, 5.5f, 5.5f);
     for(SCKey *key in _keys){
