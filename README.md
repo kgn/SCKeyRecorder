@@ -22,7 +22,7 @@ you don't have to worry about how this works, just add it to your project :) If 
 to SCKeyRecorder please read this section.
 
 SCKeyRecorder uses macros to add the retains and releases in the preprocessor phase based on the
-value of `__has_feature(objc_arc)`. These macros can be found in 
+value of `__has_feature(objc_arc)`. These macros can be found in
 [SCARC.h](https://github.com/InScopeApps/SCKeyRecorder/blob/master/SCKeyRecorder/SCARC.h).
 
     SCARCRetain(obj)
@@ -48,3 +48,8 @@ These macros will wrap the object in retain and release only if arc is not being
 
 - David Keegan ([@InScopeApps](https://github.com/inscopeapps))
 - Indragie Karunaratne ([@indragiek](https://github.com/indragiek))
+
+
+## Licence
+
+SCKeyRecorder is avalible under the [MIT License](https://github.com/InScopeApps/SCKeyRecorder/blob/master/LICENSE).
