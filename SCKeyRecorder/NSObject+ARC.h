@@ -14,7 +14,7 @@
 #define ARCSuperDealloc [super dealloc]
 #endif
 
-@interface NSObject (ARC)
+@interface NSObject(ARC)
 
 - (id)arc_retain;
 - (void)arc_release;

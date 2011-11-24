@@ -8,7 +8,7 @@
 
 #import "NSObject+ARC.h"
 
-@implementation NSObject (ARC)
+@implementation NSObject(ARC)
 
 - (id)arc_retain{
 #if __has_feature(objc_arc)
