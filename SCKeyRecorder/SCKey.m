@@ -10,6 +10,16 @@
 #import "SCKey.h"
 #import "NSObject+ARC.h"
 
+#define SCKEY_TEXT_COLOR [NSColor colorWithDeviceWhite:0.165f alpha:1.0f]
+
+NS_INLINE CGFloat SCMidWidth(NSRect aRect) {
+    return (aRect.size.width * (CGFloat)0.5);
+}
+
+NS_INLINE CGFloat SCMidHeight(NSRect aRect) {
+    return (aRect.size.height * (CGFloat)0.5);
+}
+
 @implementation SCKey{
     NSString *_stringValue;
     NSString *_prettyStringValue;
@@ -105,7 +115,7 @@
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-        [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+        [attributes setObject:SCKEY_TEXT_COLOR forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:11.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
         _textAttributes = [[NSDictionary dictionaryWithDictionary:attributes] arc_retain];
@@ -122,7 +132,7 @@
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-        [attributes setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+        [attributes setObject:SCKEY_TEXT_COLOR forKey:NSForegroundColorAttributeName];
         [attributes setObject:[NSFont systemFontOfSize:13.0f] forKey:NSFontAttributeName];
         [attributes setObject:textShadow forKey:NSShadowAttributeName];
         _largeTextAttributes = [[NSDictionary dictionaryWithDictionary:attributes] arc_retain];
@@ -137,7 +147,7 @@
     NSRect textRect = rect;
     textRect.size = [keyString sizeWithAttributes:[self largeTextAttributes]];
     textRect.origin.y += 10.0f;
-    textRect.origin.x += rect.size.width*0.5-textRect.size.width*0.5;
+    textRect.origin.x += round(SCMidWidth(rect)-SCMidWidth(textRect));
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:keyString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
@@ -185,8 +195,8 @@
     NSString *cmdString = @"⌘";
     NSRect textRect = rect;
     textRect.size = [cmdString sizeWithAttributes:[self largeTextAttributes]];
-    textRect.origin.y += rect.size.height-textRect.size.height-3.0f;
-    textRect.origin.x += rect.size.width-textRect.size.width-5.0f;
+    textRect.origin.y += NSHeight(rect)-NSHeight(textRect)-3.0f;
+    textRect.origin.x += NSWidth(rect)-NSWidth(textRect)-5.0f;
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self largeTextAttributes]];
     [attributedString drawInRect:textRect];
@@ -221,7 +231,7 @@
     NSString *cmdString = @"alt";
     NSRect textRect = rect;
     textRect.size = [cmdString sizeWithAttributes:[self textAttributes]];
-    textRect.origin.y += rect.size.height-textRect.size.height-3.0f;
+    textRect.origin.y += NSHeight(rect)-NSHeight(textRect)-3.0f;
     textRect.origin.x += 5.0f;
     NSAttributedString *attributedString = 
     [[NSAttributedString alloc] initWithString:cmdString attributes:[self textAttributes]];
